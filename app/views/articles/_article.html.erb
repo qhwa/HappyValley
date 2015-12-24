@@ -1,7 +1,11 @@
 <div class="article">
   <h2 class="name">
     <%= article.name %>
-    <small>(<%= article.versions_count %> versions)</small>
+    <small>(
+      <%= link_to article_versions_path(article) do %>
+        <%= article.versions_count %> versions
+      <% end %>
+    )</small>
   </h2>
   <div class="body"><%= article.body %></div>
 </div>
