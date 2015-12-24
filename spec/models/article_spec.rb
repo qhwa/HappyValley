@@ -31,7 +31,7 @@ RSpec.describe Article, type: :model do
       name_mapping = ->(i) { "hello #{i}" }
       
       3.times { |i| article.update name: name_mapping.call(i) }
-      expect(article.versions.map(&:name)).to eq 3.times.map {|i| name_mapping.call(i) }
+      expect(article.versions.map(&:name)).to eq 3.times.map {|i| name_mapping.call(i) }.reverse
     end
 
     it 'remove revsions on destroying' do

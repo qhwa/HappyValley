@@ -1,7 +1,7 @@
 class Article < ActiveRecord::Base
   validates_presence_of :name, :body
 
-  has_many :versions, class_name: 'ArticleVersion', dependent: :destroy
+  has_many :versions, -> { order(created_at: :desc) }, class_name: 'ArticleVersion', dependent: :destroy
 
   after_save :append_version
 
