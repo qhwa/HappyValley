@@ -1,6 +1,16 @@
-<h1>Versions of Article <%= link_to @article.name, @article %></h1>
-<ol>
+<h3 class="ui header">Versions of <%= link_to @article.name, @article %></h3>
+<div class="ui list">
   <% @article_versions.each do |version| %>
-    <li><%= link_to version.name, article_version_path(version.article, version) %> (updated at: <%= version.created_at %>)</li>
+    <div class="item article version">
+      <i class="history icon"></i>
+      <div class="content">
+        <div class="header">
+          <%= link_to version.name, article_version_path(version.article, version) %>
+        </div>
+        <div class="description">
+          updated at: <%= version.created_at %>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ol>
+</div>

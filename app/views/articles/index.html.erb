@@ -1,6 +1,9 @@
-<h1>Articles List</h1>
-<ul>
+<h3 class="ui header">Articles List</h3>
+<div class="ui lists">
   <% @articles.each do |article| %>
-    <%= link_to article.name, article %>
+    <div class="item">
+      <i class="file icon"></i>
+      <%= link_to article.name, article %>
+    </div>
   <% end %>
-</ul>
+</div>

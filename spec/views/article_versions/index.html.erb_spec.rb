@@ -8,6 +8,6 @@ RSpec.describe "article_versions/index.html.erb", type: :view do
     assign :article_versions, article.versions
     render
 
-    expect(rendered).to have_selector 'li'
+    expect(rendered).to have_selector '.article.version'
   end
 end
