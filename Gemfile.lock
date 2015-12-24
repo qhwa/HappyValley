@@ -1,3 +1,10 @@
+GIT
+  remote: http://github.com/qhwa/semantic-ui-sass.git
+  revision: 7e9abc559b0d8b991fc6d91bbb5897d1bb9b6c06
+  specs:
+    semantic-ui-sass (2.1.6.0)
+      sass (>= 3.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -159,6 +166,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
+  semantic-ui-sass!
   shoulda-matchers
   spring
   sqlite3
