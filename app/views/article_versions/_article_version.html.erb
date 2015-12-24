@@ -1,6 +1,6 @@
 <div class="article version">
   <h2 class="name">
-    <%= article_version.name %>
+    <%= link_to article_version.name, article_version_path(article_version.article, article_version) %> (updated at: <%= article_version.created_at %>)
   </h2>
 </div>
 
