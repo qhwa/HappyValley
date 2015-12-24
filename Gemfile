@@ -44,4 +44,5 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'factory_girl'
   gem 'factory_girl_rails', require: false
+  gem 'capybara'
 end
