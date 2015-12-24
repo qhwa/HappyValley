@@ -6,6 +6,9 @@ RSpec.describe Article, type: :model do
 
   context 'versions' do
     let(:article) { build :article }
+    let(:save) { article.save! }
+    let(:versions) { article.versions }
+    let(:first_version) { article.versions.first }
 
     it { expect(subject).to have_many :versions }
 
@@ -14,8 +17,21 @@ RSpec.describe Article, type: :model do
     end
 
     it do
-      article.save!
+      save
       expect(article.versions.size).to eq 1
+    end
+
+    it 'saved with exactly the same values' do
+      save
+      expect(first_version.name).to eq article.name
+      expect(first_version.body).to eq article.body
+    end
+
+    it 'append versions on saving' do
+      name_mapping = ->(i) { "hello #{i}" }
+      
+      3.times { |i| article.update name: name_mapping.call(i) }
+      expect(article.versions.map(&:name)).to eq 3.times.map {|i| name_mapping.call(i) }
     end
   end
 end
