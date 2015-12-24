@@ -40,4 +40,34 @@ RSpec.describe Article, type: :model do
       expect(article.versions).to eq []
     end
   end
+
+  context 'restoring or rolling back a version' do
+    let!(:article) { create :article }
+    let(:version) { article.versions.sample }
+
+    before do
+      5.times do |i|
+        article.update name: "a #{i}"
+      end
+    end
+
+    context '#restore' do
+      subject { -> { article.restore version } }
+
+      it do
+        expect(subject).to change { article.versions.count }.by(1)
+        expect(article.name).to eq version.name
+      end
+    end
+
+    context '#rollback' do
+      subject { -> { article.rollback_to! version } }
+      it do
+        expect(subject).to change { article.versions.count }.by(-1)
+        expect(article.name).to eq version.name
+      end
+    end
+  end
+
+
 end
