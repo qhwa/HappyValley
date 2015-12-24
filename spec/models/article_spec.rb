@@ -21,20 +21,20 @@ RSpec.describe Article, type: :model do
       expect(article.versions.size).to eq 1
     end
 
-    it 'saved with exactly the same values' do
+    it 'saves with exactly the same values' do
       save
       expect(first_version.name).to eq article.name
       expect(first_version.body).to eq article.body
     end
 
-    it 'append versions on saving' do
+    it 'appends a new version on saving' do
       name_mapping = ->(i) { "hello #{i}" }
       
       3.times { |i| article.update name: name_mapping.call(i) }
       expect(article.versions.map(&:name)).to eq 3.times.map {|i| name_mapping.call(i) }.reverse
     end
 
-    it 'remove revsions on destroying' do
+    it 'removes revsions on destroying' do
       save
       article.destroy!
       expect(article.versions).to eq []

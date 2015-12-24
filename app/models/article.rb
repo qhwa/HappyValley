@@ -12,7 +12,7 @@ class Article < ActiveRecord::Base
     versions.count
   end
 
-  # when restored to a version, will append a new version
+  # when restored to a version, append a new version
   def restore version
     attrs = version.attributes
     VERSIONED_COLUMS.each do |k|
@@ -21,8 +21,8 @@ class Article < ActiveRecord::Base
     self.save!
   end
 
-  # when rollbacked to a version, all versions after that
-  # version lose
+  # when rolled back to a version, all versions after that
+  # version lose!
   def rollback_to! version
     transaction do
       restore version
