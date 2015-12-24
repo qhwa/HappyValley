@@ -5,6 +5,11 @@ class Article < ActiveRecord::Base
 
   after_save :append_version
 
+  # TODO: cache it in database
+  def versions_count
+    versions.count
+  end
+
   private
 
     def append_version

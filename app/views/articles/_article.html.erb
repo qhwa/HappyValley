@@ -1,4 +1,7 @@
 <div class="article">
-  <h2 class="name"><%= article.name %></h2>
+  <h2 class="name">
+    <%= article.name %>
+    <small>(<%= article.versions_count %> versions)</small>
+  </h2>
   <div class="body"><%= article.body %></div>
 </div>
