@@ -1,6 +1,6 @@
 <h1>Versions of Article <%= link_to @article.name, @article %></h1>
 <ol>
   <% @article_versions.each do |version| %>
-    <li><%= render version %></li>
+    <li><%= link_to version.name, article_version_path(version.article, version) %> (updated at: <%= version.created_at %>)</li>
   <% end %>
 </ol>

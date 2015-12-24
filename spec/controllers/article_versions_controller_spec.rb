@@ -13,7 +13,7 @@ RSpec.describe ArticleVersionsController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do
-      get :show, article_id: article.id
+      get :show, article_id: article.id, id: article.versions.first.id
       expect(response).to have_http_status(:success)
     end
   end

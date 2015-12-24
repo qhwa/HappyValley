@@ -1,2 +1,6 @@
 <h1>Articles List</h1>
-<%= render @articles %>
+<ul>
+  <% @articles.each do |article| %>
+    <%= link_to article.name, article %>
+  <% end %>
+</ul>
