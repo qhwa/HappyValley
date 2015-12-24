@@ -63,7 +63,7 @@ RSpec.describe Article, type: :model do
     context '#rollback' do
       subject { -> { article.rollback_to! version } }
       it do
-        expect(subject).to change { article.versions.count }.by(-1)
+        expect(subject).to change { article.versions.count }.by_at_most(0)
         expect(article.name).to eq version.name
       end
     end
